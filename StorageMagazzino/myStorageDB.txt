@@ -1,0 +1,16 @@
+latte
+5
+3
+formaggio
+7
+7
+acqua
+1
+99vino
+3
+20
+prova
+33
+33prova2
+44
+44
