@@ -1,2 +1,3 @@
 # Cpp First Course Projects
- Mini projects that I made to learn Cpp, while doing a course on Udemy.
+*The link of the course:* https://www.udemy.com/course/cpp-deep-dive/
+
