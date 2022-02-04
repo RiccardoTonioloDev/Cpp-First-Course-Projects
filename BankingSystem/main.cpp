@@ -222,28 +222,91 @@ int main(int argc, char** argv) {
 				
 			}break;	
 			case '3':{
+				//FUNZIONA PERFETTAMENTE, NON SONO PRESENTI CONTROLLI SUGLI INPUT
 				if(verifyFile){
 					cout<<endl<<"Nessun account è stato ancora registrato"<<endl
 					<<"Operazione non riuscita: si prega di creare almeno un account"<<endl<<endl;
 					break;
 				}
+				long accountNumber;
+				float amount;
+				ifstream ifs("bankDB.txt");
+				ifs>>bnk;
+				ifs.close();
+				cout<<endl<<"In quale account vuoi depositare?: ";
+				cin>>accountNumber;
+				cin.ignore();
+				cin.sync();
+				cout<<endl;
+				cout<<endl<<"Quanto vuoi depositare?: ";
+				cin>>amount;
+				cin.ignore();
+				cin.sync();
+				cout<<endl;
+				bnk.getDataBase().find(accountNumber)->second.depositBalance(amount);
+				ofstream ofs("bankDB.txt");
+				ofs<<bnk;
+				ofs.close();
+				cout<<endl<<endl<<"############################################"<<endl;
+				cout<<"Deposito avvenuto con successo: "<<endl;
+				cout<<bnk.getDataBase().find(accountNumber)->second<<endl;
+				cout<<"############################################"<<endl<<endl;
 				
 			}break;	
 			case '4':{
+				//FUNZIONA PERFETTAMENTE, NON SONO PRESENTI CONTROLLI SUGLI INPUT
 				if(verifyFile){
 					cout<<endl<<"Nessun account è stato ancora registrato"<<endl
 					<<"Operazione non riuscita: si prega di creare almeno un account"<<endl<<endl;
 					break;
 				}
-				
+				long accountNumber;
+				float amount;
+				ifstream ifs("bankDB.txt");
+				ifs>>bnk;
+				ifs.close();
+				cout<<endl<<"In quale account vuoi prelevare?: ";
+				cin>>accountNumber;
+				cin.ignore();
+				cin.sync();
+				cout<<endl;
+				cout<<endl<<"Quanto vuoi prelevare?: ";
+				cin>>amount;
+				cin.ignore();
+				cin.sync();
+				cout<<endl;
+				bnk.getDataBase().find(accountNumber)->second.withdrawBalance(amount);
+				ofstream ofs("bankDB.txt");
+				ofs<<bnk;
+				ofs.close();
+				cout<<endl<<endl<<"############################################"<<endl;
+				cout<<"Prelievo avvenuto con successo: "<<endl;
+				cout<<bnk.getDataBase().find(accountNumber)->second<<endl;
+				cout<<"############################################"<<endl<<endl;
 			}break;	
 			case '5':{
+				//FUNZIONA PERFETTAMENTE, NON SERVE TECNICAMENTE ALCUN CONTROLLO PER GLI INPUT
 				if(verifyFile){
 					cout<<endl<<"Nessun account è stato ancora registrato"<<endl
 					<<"Operazione non riuscita: si prega di creare almeno un account"<<endl<<endl;
 					break;
 				}
-				
+				long accountNumber;
+				ifstream ifs("bankDB.txt");
+				ifs>>bnk;
+				ifs.close();
+				cout<<endl<<"Quale account si desidera cancellare?: ";
+				cin>>accountNumber;
+				cin.ignore();
+				cin.sync();
+				cout<<endl;
+				bnk.getDataBase().erase(accountNumber);
+				ofstream ofs("bankDB.txt");
+				ofs<<bnk;
+				ofs.close();
+				cout<<endl<<endl<<"############################################"<<endl;
+				cout<<"ELIMINAZIONE ACCOUNT N."<<accountNumber<<" AVVENUTA CON SUCCESSO"<<endl;
+				cout<<"############################################"<<endl<<endl;
 			}break;	
 			case '6':{
 				//FUNZIONA PERFETTAMENTE ED è COMPLETO
@@ -255,6 +318,7 @@ int main(int argc, char** argv) {
 				ifstream ifs("bankDB.txt");
 				ifs>>bnk;
 				ifs.close();
+				cout<<bnk;
 				
 			}break;	
 			case '7':{
