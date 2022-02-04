@@ -172,7 +172,7 @@ int main(int argc, char** argv) {
 		cout<<endl;
 		switch(response){
 			case '1':{
-				//FUNZIONA PERFETTAMENTE MA NON HA IL CONTROLLO DEL BALANCE MINIMO
+				//FUNZIONA PERFETTAMENTE, CON ANCHE CONTROLLO DEL BILANCIO MINIMO
 				string firstName;
 				string lastName;
 				float balance;
@@ -184,6 +184,13 @@ int main(int argc, char** argv) {
 				cin>>balance;
 				cin.ignore();
 				cin.sync();
+				if(balance<MIN_BALANCE){
+					cout<<endl<<"************************************************";
+					cout<<endl<<"Per creare un account ci vuole un minimo di 500$"<<endl;
+					cout<<"L'ACCOUNT NON E' STATO CREATO";
+					cout<<endl<<"************************************************"<<endl<<endl;
+					break;
+				}
 				cout<<endl;
 				if(!verifyFile){
 					ifstream ifs("bankDB.txt");
